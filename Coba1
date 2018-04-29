@@ -1,0 +1,98 @@
+  #include <iostream>
+  #include <stdlib.h>
+  using namespace std;
+struct Data {
+  int nilai;
+  Data *next;
+  };
+  Data *head;
+void awal(){
+  head=NULL;
+  }
+  bool isEmpty(){
+  if (head==NULL)
+  return true;
+  return false;
+  }
+  void tambahDataDepan(int dataBaru) {
+  Data *baru;
+  baru=(Data*) malloc(sizeof(Data));
+  baru->nilai=dataBaru;
+  baru->next=baru;
+  if (isEmpty()){
+  head=baru;
+  head->next=head;
+  } else {
+  Data *bantu;
+  bantu=head;
+  while (bantu->next!=head){
+  bantu=bantu->next;
+  }
+  baru->next=head;
+  head=baru;
+  bantu->next=head;
+  }
+  }
+  void tambahDataBelakang(int dataBaru){
+  Data *baru;
+  baru=(Data*) malloc(sizeof(Data));
+  baru->nilai=dataBaru;
+  baru->next=baru;
+  if (isEmpty()){
+  head=baru;
+  head->next=head;
+  } else {
+  Data *bantu;
+  bantu=head;
+  while (bantu->next!=head){
+  bantu=bantu->next;
+  }
+  bantu->next=baru;
+  baru->next=head;
+  //head=baru;
+  //bantu->next=baru;
+  }
+  }
+  void hapusDepan(){
+  if(!isEmpty()){
+  if(head->next!=head){
+  Data *hapus;
+  hapus=head;
+  Data *bantu;
+  bantu=head;
+  while (bantu->next!=head){
+  bantu=bantu->next;
+  }
+  bantu->next=head->next;
+  head=head->next;
+  delete hapus;
+  }
+  else {
+  awal();
+  }
+  }
+  }
+  void hapusBelakang(){/* 
+  tambah kode program di sini.... 
+*/
+}
+  void cetak(){
+  if (!isEmpty()){
+  Data *bantu;
+  bantu=head;
+  do {
+  cout<<bantu->nilai<<" ";
+  bantu=bantu->next;
+  } while(bantu!=head);
+ }
+  }
+  int main(){
+  awal();
+  tambahDataBelakang(5);
+  tambahDataDepan(7);
+  tambahDataBelakang(17);
+  hapusDepan();
+  hapusDepan();
+  cetak();
+  return 0;
+  }
