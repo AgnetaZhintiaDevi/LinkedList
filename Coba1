@@ -118,4 +118,40 @@ void tampilkan (){
 		cout<<" }";
 		}
 	}
-
+int main(){
+	awal=NULL;
+	destiny(0.5);
+	destiny(1);
+	destiny(1.5);
+	destiny(2);
+	destiny(2.5);
+	destiny(3);
+	option:
+	tampilkan ();
+	cout<<"  "<<endl;
+	cout<<"Menu : "<<endl;
+	cout<<"1. Insert Node Depan"<<endl;
+	cout<<"2. Insert Node Belakang"<<endl;
+	cout<<"3. Insert Node Tengah"<<endl;
+	cout<<"4. Erase Node Depan"<<endl;
+	cout<<"5. Erase Node Belakang"<<endl;
+	cout<<"Masukkan pilihan : ";
+	cin>>option;
+	switch(option){
+		case 1 : InsertDepan();
+			break;
+		case 2 : InsertBelakang();
+			break;
+		case 3 : InsertTengah();
+			break;
+		case 4 : EraseDepan();
+			break;
+		case 5 : EraseBelakang();
+			break;
+		default : cout<<"Nothing Happen "<<endl;
+	}
+		
+	
+	goto option;
+	return 0;
+}
