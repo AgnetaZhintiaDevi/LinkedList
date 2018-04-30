@@ -14,7 +14,7 @@ void awal(){
   return true;
   return false;
   }
-  void tambahDataDepan(int dataBaru) {
+  void InsertDataDepan(int dataBaru) {
   Data *baru;
   baru=(Data*) malloc(sizeof(Data));
   baru->nilai=dataBaru;
@@ -33,7 +33,7 @@ void awal(){
   bantu->next=head;
   }
   }
-  void tambahDataBelakang(int dataBaru){
+  void InsertDataBelakang(int dataBaru){
   Data *baru;
   baru=(Data*) malloc(sizeof(Data));
   baru->nilai=dataBaru;
@@ -53,7 +53,7 @@ void awal(){
   //bantu->next=baru;
   }
   }
-  void hapusDepan(){
+  void EraseDataDepan(){
   if(!isEmpty()){
   if(head->next!=head){
   Data *hapus;
@@ -72,8 +72,8 @@ void awal(){
   }
   }
   }
-  void hapusBelakang(){/* 
-  tambahkan kode programnya di sini............ 
+  void EraseDataBelakang(){/* 
+  tambahkan kode programnya di sini 
 */
 }
   void cetak(){
@@ -88,11 +88,11 @@ void awal(){
   }
   int main(){
   awal();
-  tambahDataBelakang(5);
-  tambahDataDepan(7);
-  tambahDataBelakang(17);
-  hapusDepan();
-  hapusDepan();
+  InsertDataBelakang(5);
+  InsertDataDepan(7);
+  InsertDataBelakang(17);
+  EraseDataDepan();
+  EraseDataDepan();
   cetak();
   return 0;
   }
