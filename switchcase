@@ -98,3 +98,75 @@ void clear()
 TNode *bantu,*hapus;
 bantu = head;
 while(bantu!=NULL)
+{
+hapus = bantu;
+bantu = bantu->next;
+delete hapus;
+}
+head = NULL;
+tail = NULL;
+}
+
+void tampil(){   
+TNode *bantu;  
+bantu=head;  
+if(isEmpty()==0){  
+while(bantu!=NULL){ 
+cout<<bantu->data<<endl;  
+bantu=bantu->next;  
+}
+}
+else
+cout<<"Masih Kosong"<<endl;
+}
+
+main(){  
+int pil;
+do{
+
+int n;
+cout<<"1.Insert Depan"<<endl;
+cout<<"2.Insert Belakang"<<endl;
+cout<<"3.Display"<<endl;
+cout<<"4.Delete Depan"<<endl;
+cout<<"5.Delete Belakang"<<endl;
+cout<<"6.Hapus Semua"<<endl;
+cout<<"7.Exit"<<endl;
+cout<<"Masukan Pilihan Anda :";
+pil=getche(); 
+
+switch(pil){
+case '1' : 
+cout<<"Masukan data :";cin>>n;
+isEmpty();
+insertDepan(n);
+break;
+case '2': 
+cout<<"Masukan data :";cin>>n;
+isEmpty();
+tambahBelakang(n);
+break;
+case '3': 
+cout<<"Masukan data :";cin>>n;
+isEmpty();
+tambahBelakang(n);
+break;
+case '4':
+isEmpty();
+tampil();
+break;
+case '5':
+isEmpty();
+hapusDepan();
+break;
+case '6':
+isEmpty();
+hapusBelakang();
+break;
+case '7':
+clear();
+}
+getch();
+}while(pil!='7');
+return 0;
+}
