@@ -1,25 +1,100 @@
-#include<iostream>
+#include <iostream> 
+#include <conio.h> 
+#include <stdio.h>
 using namespace std;
-int main(){
-	
 
-cout<<"===================================\n"<<endl;
-cout<<"||       CONTOH PROGRAM        ||\n"<<endl;
-cout<<"||  DOUBLE LINK LIST CIRCULAR  ||\n"<<endl;
-cout<<"===================================\n"<<endl;
-cout<<"          \t\tMENU PILIHAN :           \n"<<endl;
-cout<<"===================================\n"<<endl;
-cout<<"[1] MASUKKAN DATA DARI DEPAN\n"<<endl;
-cout<<"[2] MASUKKAN DATA DARI BELAKANG\n"<<endl;
-cout<<"[3] TAMPILKAN DATA\n"<<endl;
-cout<<"[4] HAPUS DATA PALING DEPAN\n"<<endl;
-cout<<"[5] HAPUS DATA PALING BELAKANG\n"<<endl;
-cout<<"[6] HAPUS SEMUA DATA\n"<<endl;
-cout<<"[7] CARI DATA\n"<<endl;
-cout<<"[0] KELUAR\n"<<endl;
-cout<<"t===================================\n\n"<<endl;
-cout<<"===================================\n\n"<<endl;
-cout<<"->->PILIHAN ANDA   :  "<<endl;
+struct TNode { 
+int data;   
+TNode *next;
+};  
+TNode *head, *tail;  
 
-return 0;
+void init(){  
+head = NULL;
+tail = NULL;  
 }
+
+int isEmpty(){  
+if(tail == NULL) return 1;
+else return 0;
+}
+
+void insertDepan(int databaru){
+TNode *baru;
+baru = new TNode;
+baru->data = databaru;
+baru->next = NULL;
+if(isEmpty()==1){
+head=tail=baru;
+tail->next=NULL;
+}
+else {
+baru->next = head;
+head = baru;
+}
+printf("Data masuk\n");
+}
+
+void tambahBelakang(int databaru){
+TNode *baru,*bantu;
+baru = new TNode;
+baru->data = databaru;
+baru->next = NULL;
+if(isEmpty()==1){
+head=baru;
+tail=baru;
+tail->next = NULL;
+}
+else {
+tail->next = baru;
+tail=baru;
+}
+printf("Data masuk\n");
+}
+
+void hapusDepan(){
+TNode *hapus;
+int d;
+if (isEmpty()==0){
+if(head!=tail){
+hapus = head;
+d = hapus->data;
+head = head->next;
+delete hapus;
+} else {
+d = tail->data;
+head=tail=NULL;
+}
+printf("%d terhapus\n",d);
+} else printf("Masih kosong\n");
+}
+
+void hapusBelakang(){
+TNode *bantu,*hapus;
+int d;
+if (isEmpty()==0){
+bantu = head;
+if(head!=tail){
+while(bantu->next!=tail){
+bantu = bantu->next;
+}
+hapus = tail;
+tail=bantu;
+d = hapus->data;
+delete hapus;
+tail->next = NULL;
+}else {
+d = tail->data;
+head=tail=NULL;
+}
+
+cout<<"terhapus"<<endl;
+} else 
+cout<<"Masih kosong\n";
+}
+
+void clear()
+{
+TNode *bantu,*hapus;
+bantu = head;
+while(bantu!=NULL)
