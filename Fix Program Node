@@ -94,6 +94,43 @@ void EraseDepan(){
 		}
 	
 }
+void EraseTengah()
+{
+  node *hapus, *bantu;
+  int posisi_hapus,banyakdata,poshapus;
+  if(awal != NULL)
+  {
+    cout<<"Akan dihapus setelah Data Ke ? : ";
+    cin>>posisi_hapus;
+   banyakdata=1;
+    bantu=awal;
+    while(bantu->next != NULL)
+    {
+      bantu=bantu->next;
+      banyakdata++;
+    }
+    if((posisi_hapus<1)||(posisi_hapus>banyakdata))
+    {
+      cout<<"Belum ada data !";
+    }
+    else
+    {
+      bantu=awal;
+      poshapus=1;
+      while(poshapus<(posisi_hapus-1))
+      {
+        bantu=bantu->next;
+        poshapus++;
+      }
+      hapus=bantu->next;
+      bantu->next=hapus->next;
+      delete hapus;
+    }
+ }
+ else 
+    cout<<"Data Masih kosong, tidak bisa hapus data dari tengah! ";
+ 
+}
 void EraseBelakang(){
 	node *temp;
 	temp = awal;
@@ -134,7 +171,8 @@ int main(){
 	cout<<"2. Insert Node Belakang"<<endl;
 	cout<<"3. Insert Node Tengah"<<endl;
 	cout<<"4. Erase Node Depan"<<endl;
-	cout<<"5. Erase Node Belakang"<<endl;
+	cout<<"5. Erase Node Tengah"<<endl;
+	cout<<"6. Erase Node Belakang"<<endl;
 	cout<<"Masukkan pilihan : ";
 	cin>>option;
 	switch(option){
@@ -146,7 +184,9 @@ int main(){
 			break;
 		case 4 : EraseDepan();
 			break;
-		case 5 : EraseBelakang();
+		case 5 : EraseTengah():
+			break;
+		case 6 : EraseBelakang();
 			break;
 		default : cout<<"Nothing Happen "<<endl;
 	}
